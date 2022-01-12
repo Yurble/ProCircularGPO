@@ -31,18 +31,20 @@ else
     Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) GpLink $GPOName already linked on $OU. Moving On."
 }
 
-$GPOName = 'Workstations Enhanced Auditing Policy'
-$OU = "ou=Workstations,dc=windomain,dc=local"
-Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Importing $GPOName..."
-Import-GPO -BackupGpoName $GPOName -Path "c:\vagrant\resources\GPO\Workstations_Enhanced_Auditing_Policy" -TargetName $GPOName -CreateIfNeeded
-$gpLinks = $null
-$gPLinks = Get-ADOrganizationalUnit -Identity $OU -Properties name,distinguishedName, gPLink, gPOptions
-$GPO = Get-GPO -Name $GPOName
-If ($gPLinks.LinkedGroupPolicyObjects -notcontains $gpo.path)
-{
-    New-GPLink -Name $GPOName -Target $OU -Enforced yes
-}
-else
-{
-    Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) GpLink $GPOName already linked on $OU. Moving On."
-}
+# Workstation GPO Policy commented out for now to match project requirements; this can be uncommented for later use.
+
+#$GPOName = 'Workstations Enhanced Auditing Policy'
+#$OU = "ou=Workstations,dc=windomain,dc=local"
+#Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Importing $GPOName..."
+#Import-GPO -BackupGpoName $GPOName -Path "c:\vagrant\resources\GPO\Workstations_Enhanced_Auditing_Policy" -TargetName $GPOName -CreateIfNeeded
+#$gpLinks = $null
+#$gPLinks = Get-ADOrganizationalUnit -Identity $OU -Properties name,distinguishedName, gPLink, gPOptions
+#$GPO = Get-GPO -Name $GPOName
+#If ($gPLinks.LinkedGroupPolicyObjects -notcontains $gpo.path)
+#{
+#    New-GPLink -Name $GPOName -Target $OU -Enforced yes
+#}
+#else
+#{
+#    Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) GpLink $GPOName already linked on $OU. Moving On."
+#}
