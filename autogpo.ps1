@@ -69,7 +69,10 @@ Remove-Item 'C:\Windows\Temp\ProCircularGPOtest-main\' -Recurse -Force
 Remove-Item 'C:\Windows\Temp\Zipfile.zip'
 Write-Host "Downloaded files removed. You are now free to roam about the server."
 
+Write-Output $OU
+Write-Output $Domain_out
 
+#For later use, if necessary:
 
 #$GPOName = 'Workstations Enhanced Auditing Policy'
 #$OU = $WorkingOU,$domain "ou=Workstations,dc=interns,dc=rock"
